@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('admin_home/show_score', function () {
+//     return view('admins.showScoreIndivitual');
+// });
 
 Auth::routes();
 
@@ -52,11 +52,17 @@ Route::prefix('admin_home')->group(function() {
     Route::get('/addgroup','GroupController@create')->name('create');
     Route::post('/add/groups', 'GroupController@addAndUpdateGroups')->name('add_group');
 
-    //Route::get('/edit_student','AdminHomeController@edit_student')->name('edit_student');
     Route::get('/add_student','AdminHomeController@add_student')->name('add_student');
     Route::post('/addinfor_student', 'AdminHomeController@addInforStudent')->name('addInforStudent');
     Route::get('/delete_student','AdminHomeController@delete_student')->name('delete_student');
     Route::post('/deleteinfor_student', 'AdminHomeController@deleteInforStudent')->name('deleteInforStudent');
+
+    //View result
+    Route::get('/view_result','AdminHomeController@viewResult')->name('view_result');
+    Route::get('/view_score','AdminHomeController@viewScoreIndivitual')->name('view_score');
+    Route::post('/show_score','AdminHomeController@showScoreIndivitual')->name('show_score');
+    Route::get('/view_score_group','AdminHomeController@viewScoreGroup')->name('view_score_group');
+    Route::post('/show_score_group','AdminHomeController@showScoreGroup')->name('show_score_group');
 
 });
 

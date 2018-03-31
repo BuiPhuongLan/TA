@@ -24,6 +24,8 @@ class AdminHomeController extends Controller
     {
         return view("admin-home");
     }
+
+    //Edit Student
     public function edit_student()
     {
         return view("admins.editStudent");
@@ -55,7 +57,32 @@ class AdminHomeController extends Controller
     {
         $mssv = $request->MSSV;
         $users = User::where('MSSV',$mssv)->delete();
-        return view('admins.editStudent',compact('mssv'));
+        return view('admins.editStudent');
+    }
+
+    //View result
+
+    public function viewResult(){
+        return view('admins.viewResult');
+    }
+    public function viewScoreIndivitual(){
+        return view('admins.viewScoreIndivitual');
+    }
+    public function showScoreIndivitual(Request $request){
+        $mssv = $request->MSSV;
+        $scores = Result::where('user_mssv',$mssv)->avg('score');
+        $score = round($scores, 2);
+        return view('admins.showScoreIndivitual', compact('mssv','score'));
+    }
+
+    public function viewScoreGroup(){
+        return view('admins.viewScoreGroup');
+    }
+    public function showScoreGroup(Request $request){
+        $group = $request->group;
+        $scores = Result::where('group_id',$group)->avg('score');
+        $score = round($scores, 2);
+        return view('admins.showScoreGroup', compact('group','score'));
     }
 
     

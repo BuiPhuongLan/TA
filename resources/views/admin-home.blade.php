@@ -22,7 +22,7 @@
                     
                     <a href="{{ url('/admin_home/setup')}}" class="list-group-item"><span  aria-hidden="true"></span> Setup Question </a>
 				    <a href="{{ url('/admin_home/edit_student')}}" class="list-group-item"><span  aria-hidden="true"></span> Edit Student </a>
-					<a href="" class="list-group-item"><span  aria-hidden="true"></span> View result </a>
+					<a href="{{ url('/admin_home/view_result')}}" class="list-group-item"><span  aria-hidden="true"></span> View result </a>
                 </div>
                 
 			</div>
