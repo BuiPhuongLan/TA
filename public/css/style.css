@@ -1,0 +1,70 @@
+body{
+	background: #f4f4f4f4;
+}
+
+/*Navbar*/
+.navbar{
+	min-height: 33px !important; 
+	margin-bottom: 15px;
+	border-radius: 0;
+}
+
+#app .navbar-brand{
+	padding-top: 15px !important;
+	padding-bottom: 0 !important;
+	height: 50px;
+	color: #ffffff;
+
+}
+
+#abc{
+	color: #ffffff;
+}
+
+.navbar-default {
+	background-color: #4f5052;
+	/* background-color: #081c74; */
+  /* border-color: #2b2561; */
+}
+
+/*custom*/
+.main-color-bg{
+  background-color: #98bfdf !important;
+  /* border-color: #042347 !important; */
+  color: #ffffff;
+}
+
+
+/*breadcrumb*/
+.breadcrumb{
+	background: #dddada;
+	color: #333333;
+}
+.breadcrum a{
+	color: #333333;
+}
+
+/*progress bar*/
+.progress-bar{
+	background: #81b0d6;
+	color: #ffffff;
+}
+
+.dash-box{
+	text-align: center;
+}
+
+/*footer*/
+#footer{
+  background: #4f5052;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+#login{
+  margin-top: 30px;
+}
+
+
