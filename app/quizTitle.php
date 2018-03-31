@@ -16,7 +16,7 @@ class quizTitle extends Model
         return $this->belongsTo('App\AdminUser');
     }
 
-     public function group()
+    public function group()
     {
         return $this->belongsTo('App\Group');
     }

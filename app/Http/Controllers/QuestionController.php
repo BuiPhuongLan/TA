@@ -213,9 +213,10 @@ class QuestionController extends Controller
     {
         // $question = Question::where('quiz_titles_id','$id');    
         
-        $question = Question::find($id);
+        $question = Question::find($id);      
+        $delete_ans = Answer::where('question_id','$id')->delete();
+       // $delete_ans = Answer::find($id)->delete();
         $question->delete();
-
         $groups = Group::all();
         $quizData = quizTitle::find($id);
         return view('admins.editquiz',compact('quizData','groups'));

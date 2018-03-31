@@ -29,10 +29,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin_home', 'AdminHomeController@index');
 
 Route::prefix('admin_home')->group(function() {
+    //Setup Quesion
     Route::get('/setup','QuestionController@setup')->name('admin.setup');
-    Route::get('/addgroup','GroupController@create')->name('create');
-    Route::post('/add/groups', 'GroupController@addAndUpdateGroups')->name('add_group');
-
+    
     Route::get('/addquiz', 'QuestionController@addquiz')->name('addquiz'); 
     Route::post('/addquizdata', 'QuestionController@addQuizData')->name('addquizdata');
     Route::post('/addquestiondata_text', 'QuestionController@addQuestionDataText')->name('addquestiondata_text');
@@ -47,6 +46,17 @@ Route::prefix('admin_home')->group(function() {
     Route::post('/addquestiondata_text', 'QuestionController@addQuestionDataText')->name('addquestiondata_text');
     Route::post('/question/{id}/update', 'QuestionController@updatequestion'); 
     Route::post('/question/{id}/delete', 'QuestionController@deleteQuestion'); 
+
+    //Edit Student
+    Route::get('/edit_student','AdminHomeController@edit_student')->name('edit_student');
+    Route::get('/addgroup','GroupController@create')->name('create');
+    Route::post('/add/groups', 'GroupController@addAndUpdateGroups')->name('add_group');
+
+    //Route::get('/edit_student','AdminHomeController@edit_student')->name('edit_student');
+    Route::get('/add_student','AdminHomeController@add_student')->name('add_student');
+    Route::post('/addinfor_student', 'AdminHomeController@addInforStudent')->name('addInforStudent');
+    Route::get('/delete_student','AdminHomeController@delete_student')->name('delete_student');
+    Route::post('/deleteinfor_student', 'AdminHomeController@deleteInforStudent')->name('deleteInforStudent');
 
 });
 

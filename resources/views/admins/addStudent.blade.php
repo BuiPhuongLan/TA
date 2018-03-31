@@ -5,15 +5,22 @@
  
 <div class="row">
   <div class="col-md-7">
-
-  <form class="form-horizontal " method="POST" action="{{route('addquizdata')}}" enctype="multipart/form-data">
+    @include('errors')
+  <form class="form-horizontal " method="POST" action="{{route('addInforStudent')}}" enctype="multipart/form-data">
 
     {{ csrf_field() }}
-    <input type="hidden" name="action" value="addquiz">
     
     @if (Auth::guard("admin_user")->user())
       <input type="hidden" name="user_id" value="{{Auth::guard('admin_user')->user()->id}}">
     @endif
+
+    <div class="form-group">
+            <label for="MSSV" class="col-lg-3 col-md-3 control-label">MSSV</label>
+            <div class="col-md-7">
+              <input type="text" name="MSSV" id="MSSV"  class="form-control" required>
+              
+            </div>
+          </div>
 
     <div class="form-group">
       <label for="Label" class="col-lg-3 col-md-3 control-label">Name</label>
@@ -21,9 +28,21 @@
         <input type="text" name="name" id="name"  class="form-control" required>
         
       </div>
-    </div>  
-
+    </div>
     
+    <div class="form-group">
+      <label for="Label" class="col-lg-3 col-md-3 control-label">Email address</label>
+      <div class="col-md-7">
+        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="Label" class="col-lg-3 col-md-3 control-label">Password</label>
+      <div class="col-md-7">
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+    </div>
 
     <div class="form-group">
       <label  for="Label" class="col-lg-3 col-md-3 control-label">Group </label>
@@ -40,12 +59,12 @@
     
     <div class="form-group">
       <div class="col-lg-3 col-md-3 col-lg-offset-3 col-md-offset-3">
-        <button type="submit"  value="Submit" class="btn btn-warning">Next</button>
+        <button type="submit"  value="Submit" class="btn btn-warning">Submit</button>
       </div>
     </div>
       
   </form>
-<!-- ****************** END adding product form ****************** --> </div>
+  </div>
   </div>
 </div>
 

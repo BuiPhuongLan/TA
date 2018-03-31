@@ -22,4 +22,9 @@ class AdminUser extends User
     {
         return $this->hasMany('App\Result' , 'user_id');
     }
+    public function group()
+    {
+        return $this->hasMany('App\Group');
+    }
+    
 }

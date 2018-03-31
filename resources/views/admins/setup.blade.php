@@ -6,9 +6,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Setup question</div>
 
-                <div class="panel-body">
+                {{-- <div class="panel-body">
                     <a href="{{ route('create')}}">Add Group</a>
-                </div>
+                </div> --}}
                 
                 <div class="panel-body">
                     <a href="{{ route('addquiz')}}">Add new quiz</a>

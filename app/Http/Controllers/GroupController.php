@@ -16,6 +16,7 @@ class GroupController extends Controller
         if($request->action == "addgroup"){
           $groups = new Group;
           $groups->name = $request->newGroup;
+          $groups->TA = $request->newTA;
           $groups->save();
           return redirect('admin_home/addgroup');
                 

@@ -4,29 +4,35 @@
 <div class="row">
 <div class="col-lg-12 col-md-12">
 <!-- add tag ************************************************ -->
-    <form class="form-horizontal "  method="POST" action="{{ route('add_group') }}">
- <fieldset>
+  <form class="form-horizontal "  method="POST" action="{{ route('add_group') }}">
+  <fieldset>
         {{ csrf_field() }}
         <input type="hidden" name="action" value="addgroup">
 
-         <div class="form-group">
-          <div class="col-md-7">
-         <label for="inputTag" class="col-lg-3 col-md-3 control-label" >Add Group </label>    
-           <div class="col-lg-6 col-md-6">
-
-            <input type="text" class="form-control" placeholder="" id="newGroup" name="newGroup">
-            <br>
-            </div>
-             
-            <div class="col-lg-3 col-md-3">
-
-            <button style="submit" class=" btn btn-warning ">add</button>
-           </div>
+        <div class="form-group">
+        <div class="col-md-7">
+        <label for="inputTag" class="col-lg-3 col-md-3 control-label" >Add Group </label>    
+          <div class="col-lg-6 col-md-6">
+            <input type="text" class="form-control" placeholder="" id="newGroup" name="newGroup">               
+          </div>     
         </div>
         </div>
-        
+
+        <div class="form-group">
+        <div class="col-md-7">
+            
+          <label for="inputTag" class="col-lg-3 col-md-3 control-label" >Add TA </label>    
+          <div class="col-lg-6 col-md-6">
+            <input type="text" class="form-control" placeholder="" id="newTA" name="newTA">        
+          </div>       
+        </div>
+        </div>
+
+        <div class="col-md-5">
+          <button style="submit" class=" btn btn-warning pull-right">add</button>
+        </div>
       
-       </fieldset>
+    </fieldset>
     </form>
 <!-- Update tag ************************************************ -->
   <form class="form-horizontal " method="POST" action="{{ route('add_group') }}">
