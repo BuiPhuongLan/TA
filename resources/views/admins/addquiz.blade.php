@@ -25,7 +25,7 @@
 
     
 
-    {{-- <div class="form-group">
+    <div class="form-group">
       <label  for="Label" class="col-lg-3 col-md-3 control-label">Group </label>
       <div class="col-md-7">
         <select class="form-control" id="group" name="group">
@@ -35,7 +35,7 @@
         </select>
         <br>
       </div>
-    </div>  --}}
+    </div> 
 
     
     <div class="form-group">
