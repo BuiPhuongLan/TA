@@ -156,6 +156,7 @@ class QuestionController extends Controller
         //     'name' => 'required',
         //     'type'=>'required',
         //     ]);
+        //session()->flash('flash_message', 'Ban da update thanh cong');
         $quizData=quizTitle::find($request->quiz_id);
         $quizData = $quizData->update([
             'name'=>$request->name,
@@ -168,9 +169,20 @@ class QuestionController extends Controller
         return view('admins.editquiz',compact('quizData','groups'));
     }
     
+    // public function deletequiz($id)
+    // {
+    //     $quiz = quizTitle::find($id);
+    //     $quiz->delete();
+       
+    //     return redirect()->route('viewquiz');
+    // }
     public function deletequiz($id)
     {
+       // \Session::flash('message', 'Ban da xoa title thanh cong');
         $quiz = quizTitle::find($id);
+        // $question = Question::where('quiz_titles_id',$quiz->id);
+        // $answer = Answer::where('question_id',$question->id)->delete();    
+        // $question ->delete();
         $quiz->delete();
         
         return redirect()->route('viewquiz');
@@ -189,10 +201,11 @@ class QuestionController extends Controller
     }
 
     //updating question
-    public function updatequestion(Request $request,$id){
+    public function updatequestion(Request $request){
         // $this->validate($request, [
         //     'question' => 'required',    
         // ]);
+       // \Session::flash('message', 'Ban da update thanh cong');
 
         $questionData = Question::find($request->question_id);
 
@@ -203,24 +216,23 @@ class QuestionController extends Controller
         $this->updatinganswer($request->answer_id1,$request->answer1,$request->score1);
         $this->updatinganswer($request->answer_id2,$request->answer2,$request->score2);
         $this->updatinganswer($request->answer_id3,$request->answer3,$request->score3);
-
+        
         $groups = Group::all();
         $quizData = quizTitle::find($request->quiz_id);
         return view('admins.editquiz',compact('quizData','groups'));
 
     }
-    public function deleteQuestion($id)
+
+    public function deleteQuestion(Request $request)
     {
-        // $question = Question::where('quiz_titles_id','$id');    
-        
-        $question = Question::find($id);      
-        $delete_ans = Answer::where('question_id','$id')->delete();
-       // $delete_ans = Answer::find($id)->delete();
+        //\Session::flash('message', 'Ban da xoa question thanh cong');
+        $question = Question::find($request->question_id);
+        $answer = Answer::where('question_id',$question->id)->delete();    
         $question->delete();
         $groups = Group::all();
-        $quizData = quizTitle::find($id);
+        $quizData = quizTitle::find($request->quiz_id);
         return view('admins.editquiz',compact('quizData','groups'));
     }
-
+    
 
 }

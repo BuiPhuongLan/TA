@@ -30,6 +30,7 @@
 
         <div class="col-md-5">
           <button style="submit" class=" btn btn-warning pull-right">add</button>
+          <a href="{{route('edit_student')}}" class="btn btn-warning pull-right">Previous</a>
         </div>
       
     </fieldset>

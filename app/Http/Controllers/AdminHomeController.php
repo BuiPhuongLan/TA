@@ -55,9 +55,20 @@ class AdminHomeController extends Controller
     }
     public function deleteInforStudent(Request $request)
     {
-        $mssv = $request->MSSV;
-        $users = User::where('MSSV',$mssv)->delete();
-        return view('admins.editStudent');
+        // $mssv = $request->MSSV;
+        // $users = User::where('MSSV',$mssv)->delete();
+        // return view('admins.editStudent');
+        $mssv = $request->MSSV;      
+        if (User::where('MSSV',$mssv)->exists()) {
+            $users = User::where('MSSV',$mssv)->delete();
+            $check = 'Da xoa thanh cong';
+            return view('admins.checkExistDelete', compact('check'));
+        }
+        else {
+            $check = 'MSSV khong ton tai.Vui long nhap lai!';
+            return view('admins.checkExistDelete', compact('check'));
+        }
+        
     }
 
     //View result
@@ -70,9 +81,17 @@ class AdminHomeController extends Controller
     }
     public function showScoreIndivitual(Request $request){
         $mssv = $request->MSSV;
-        $scores = Result::where('user_mssv',$mssv)->avg('score');
-        $score = round($scores, 2);
-        return view('admins.showScoreIndivitual', compact('mssv','score'));
+        if (Result::where('user_mssv',$mssv)->exists()) {
+            $scores = Result::where('user_mssv',$mssv)->avg('score');
+            $score = round($scores, 2);
+            $check = '';
+            return view('admins.showScoreIndivitual', compact('mssv','score','check'));
+        }
+        else {
+            $check = 'MSSV khong ton tai. Vui long nhap lai!';
+            return view('admins.showScoreIndivitual', compact('check'));
+        }
+        
     }
 
     public function viewScoreGroup(){
@@ -80,11 +99,16 @@ class AdminHomeController extends Controller
     }
     public function showScoreGroup(Request $request){
         $group = $request->group;
-        $scores = Result::where('group_id',$group)->avg('score');
-        $score = round($scores, 2);
-        return view('admins.showScoreGroup', compact('group','score'));
+        if (Result::where('group_id',$group)->exists()) {
+            $scores = Result::where('group_id',$group)->avg('score');
+            $score = round($scores, 2);
+            $check = '';
+            return view('admins.showScoreGroup', compact('group','score','check'));
+        }
+        else {
+            $check = 'Name group khong ton tai. Vui long nhap lai!';
+            return view('admins.showScoreGroup', compact('check'));
+        }
+       
     }
-
-    
-
 }

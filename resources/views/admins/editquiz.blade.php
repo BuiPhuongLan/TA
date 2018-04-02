@@ -5,11 +5,11 @@
     <div class="col-lg-8 col-md-8">      
         <form class="form-horizontal " method="POST" action="/admin_home/quiz/{{$quizData->id}}/update" enctype="multipart/form-data">      
             {{ csrf_field() }}
+
             <input type="hidden" name="action" value="editquiz">
             @if (Auth::guard("admin_user")->user())
                 <input type="hidden" name="user_id" value="{{Auth::guard('admin_user')->user()->id}}">
             @endif
-            {{--  <input type="hidden" name="user_id" value="{{Auth::user()->id}}">  --}}
             <input type="hidden" name="quiz_id" value="{{$quizData->id}}">
 
             <div class="form-group">
@@ -58,6 +58,7 @@
       <!--delete question form -->    
         <form method="POST" action="/admin_home/quiz/{{$quizData->id}}/delete">
             {{ csrf_field() }}
+            
             <div class="form-group">
             <div class="col-lg-3 col-md-3 col-lg-offset-3 col-md-offset-3 ">
                 <button type="submit"  value="Submit" class="btn btn-warning">delete</button>
@@ -95,9 +96,6 @@
             <div class="col-lg-6 col-md-6">
             <input class="form-control" type="text" id="question" name="question" class="form-control" value="{{$question->question}}">
             </div>
-            {{--  <div class="col-lg-1 col-md-1">
-                <input class="form-control" type="text"  class="form-control" id="score" name="score" placeholder="T.Score" value="{{$question->score}}">
-            </div>  --}}
         </div>  
 
         <?php $counter = 1?>   
@@ -130,6 +128,9 @@
     
     <form method="POST" action="/admin_home/question/{{$question->id}}/delete">
         {{ csrf_field() }}
+
+        <input type="hidden" name="question_id" value="{{$question->id}}">
+        <input type="hidden" name="quiz_id" value="{{$quizData->id}}">
         
         <div class="form-group">
         <div class="col-lg-3 col-md-3 col-lg-offset-3 col-md-offset-3 ">
@@ -143,13 +144,8 @@
 </div>
 <?php $counterQuestions = $counterQuestions + 1?> 
 @endforeach
-{{-- <script>
-$(document).ready(function() {
 
-  $('#group').prop('value', '{{$quizData->group_id}}')
-  
-});
-</script>  --}}
+
 
  
 

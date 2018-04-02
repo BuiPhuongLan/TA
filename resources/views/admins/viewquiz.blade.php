@@ -12,7 +12,11 @@
     
     @if($quizzes->count())
     <thead>
-      
+
+    @if(Session::has('message'))
+        <div class="alert alert-success">{{Session::get('message')}}</div> 
+    @endif
+    
     @foreach($quizzes as $quiz)
    <tr>
         @if (Auth::guard("admin_user")->user())

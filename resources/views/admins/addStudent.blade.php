@@ -60,6 +60,7 @@
     <div class="form-group">
       <div class="col-lg-3 col-md-3 col-lg-offset-3 col-md-offset-3">
         <button type="submit"  value="Submit" class="btn btn-warning">Submit</button>
+        <a href="{{route('edit_student')}}" class="btn btn-warning">Previous</a>
       </div>
     </div>
       
